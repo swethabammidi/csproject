@@ -242,6 +242,7 @@ import-scan-results:
               -F 'close_old_findings_product_scope=false' \
               -F 'push_to_jira=false' \
               -F 'create_finding_groups_for_all_findings=true'
+              
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.2
         with:
@@ -269,6 +270,7 @@ import-scan-results:
               -F 'close_old_findings_product_scope=false' \
               -F 'push_to_jira=false' \
               -F 'create_finding_groups_for_all_findings=true'
+              
   dev-deployment:
     name: DevDeployment
     runs-on: ubuntu-latest
