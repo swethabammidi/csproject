@@ -263,7 +263,7 @@ import-scan-results:
               -F 'scan_type=Retire.js Scan' \
               -F 'file=@retirejs-report.json;type=application/json' \
               -F 'product_name=demo product' \
-              -F 'engagement_name=npm-demo2-engagement' \
+              -F 'engagement_name=demo2-engagement' \
               -F 'engagement=2' \
               -F 'close_old_findings=false' \
               -F 'close_old_findings_product_scope=false' \
