@@ -298,8 +298,8 @@ jobs:
               -F 'scan_type=Safety Scan' \
               -F 'file=@oast-results.json;type=application/json' \
               -F 'product_name=demo product' \
-              -F 'engagement_name=demo2-engagement' \
-              -F 'engagement=2' \
+              -F 'engagement_name=demo3-engagement' \
+              -F 'engagement=3' \
               -F 'close_old_findings=false' \
               -F 'close_old_findings_product_scope=false' \
               -F 'push_to_jira=false' \
