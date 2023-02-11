@@ -295,7 +295,7 @@ jobs:
               -F 'minimum_severity=Info' \
               -F 'active=true' \
               -F 'verified=true' \
-              -F 'scan_type=Safety Scan' \
+              -F 'scan_type=oast-results Scan' \
               -F 'file=@oast-results.json;type=application/json' \
               -F 'product_name=demo product' \
               -F 'engagement_name=demo3-engagement' \
