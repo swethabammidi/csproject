@@ -295,7 +295,7 @@ jobs:
               -H 'Authorization: Token bad59aef4497400d8c0383ba8bbddb8b3ec64fd1' \
               -F 'scan_type=Safty Scan' \
               -F 'file=@oast-results.json;type=application/json' \
-              -F 'minimum_severity:Info' \
+              -F 'minimum_severity=Info' \
               -F 'product_name=demo product' \
               -F 'engagement_name=demo3-engagement' \
               -F 'engagement=3' \
