@@ -287,23 +287,18 @@ jobs:
 
       - name: Run Import 
         run: |
-            curl -X 'POST' \
-              'http://102.37.218.186:8080/api/v2/import-scan/' \
-              -H 'accept: application/json' \
-              -H 'Content-Type: multipart/form-data' \
+            curl -X POST \
+              'https://102.37.218.186:8080/api/v2/import-scan/' \
+              -H 'Content-Type: application/json' \
               -H 'Authorization: Token bad59aef4497400d8c0383ba8bbddb8b3ec64fd1' \
-              -F 'minimum_severity=Info' \
-              -F 'active=true' \
-              -F 'verified=true' \
-              -F 'scan_type=oast-results Scan' \
-              -F 'file=@oast-results.json;type=application/json' \
-              -F 'product_name=demo product' \
-              -F 'engagement_name=demo3-engagement' \
-              -F 'engagement=3' \
-              -F 'close_old_findings=false' \
-              -F 'close_old_findings_product_scope=false' \
-              -F 'push_to_jira=false' \
-              -F 'create_finding_groups_for_all_findings=true'        
+              -d '{
+              "scan_type": "Safty Scan",
+              "file": "@oast-results.json;type=application/json'",
+              "minimum_severity": "Info",
+              "engagement": "3",
+              "engagement_name": "demo3-engagement",
+                  }'
+        
   dev-deployment:
     name: DevDeployment
     runs-on: ubuntu-latest
