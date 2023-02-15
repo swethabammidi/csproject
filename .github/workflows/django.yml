@@ -20,8 +20,26 @@ jobs:
         with:
           name: Truffle Hog Output
           path: trufflehog-results.json
-
-
+ 
+  nikto_scan:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install Nikto
+      run: |
+        sudo apt-get update && sudo apt-get install -y nikto
+    - name: Run Nikto scan
+      env:
+        TARGET_URL: http://3.108.44.52:8080
+      run: |
+        nikto -h $TARGET_URL -Format json -o nikto_output.json
+    - name: Upload scan report
+      uses: actions/upload-artifact@v2
+      with:
+        name: Nikto scan report
+        path: nikto_output.json
+      
   docker-lint:
     name: LintChecking-Docker-Hadolint
     runs-on: ubuntu-latest
