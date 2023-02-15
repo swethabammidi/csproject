@@ -33,7 +33,7 @@ jobs:
       env:
         TARGET_URL: http://3.108.44.52:8080
       run: |
-        nikto -h $TARGET_URL -Format json -o nikto_output.json
+        nikto -h $http://3.108.44.52:8080 -Format json -o nikto_output.json
     - name: Upload scan report
       uses: actions/upload-artifact@v2
       with:
