@@ -203,10 +203,7 @@ jobs:
 
       - name: Install Node modules
         run: npm install
-        
-      - name: Authenticate Snyk
-        run: snyk auth ${{ secrets.SNYK_TOKEN }}
-
+      
       - name: Run Snyk
         run: snyk test --json > snyk-results.json
         env:
