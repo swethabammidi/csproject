@@ -207,7 +207,7 @@ jobs:
       - name: Run Snyk
         run: snyk test --json > snyk-results.json
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: snyk auth ${{ secrets.SNYK_TOKEN}} 
         continue-on-error: true
 
       - uses: actions/upload-artifact@v3.1.1
