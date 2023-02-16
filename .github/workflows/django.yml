@@ -185,6 +185,25 @@ jobs:
           name: RetireJS
           path: retirejs-report.json
         if: always()                        # what is this for?
+        name: Nikto Scan
+
+  nikto-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Nikto
+        run: sudo apt-get update && sudo apt-get install -y nikto
+      - name: Run Nikto Scan
+        run: nikto -h http://3.108.44.52:8080 -o report.json -Format json
+      - name: Commit and Push Report
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: "GitHub Actions"
+          author_email: "actions@github.com"
+          message: "Add Nikto scan report"
+          add: "report.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
   oast-snyk:
     name: SecretScanning-NodeJS-Synk
