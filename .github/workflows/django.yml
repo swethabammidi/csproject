@@ -249,6 +249,7 @@ jobs:
               -F 'close_old_findings_product_scope=false' \
               -F 'push_to_jira=false' \
               -F 'create_finding_groups_for_all_findings=true'
+              -F 'deduplication_on_engagement=true'
               
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.2
@@ -278,6 +279,7 @@ jobs:
               -F 'close_old_findings_product_scope=false' \
               -F 'push_to_jira=false' \
               -F 'create_finding_groups_for_all_findings=true'
+              -F 'deduplication_on_engagement=true'
               
       
   dev-deployment:
