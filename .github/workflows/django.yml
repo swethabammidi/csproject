@@ -296,6 +296,10 @@ jobs:
                -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
                -H 'Accept: application/json' \
                -H 'Content-Type: multipart/form-data' \
+               -F 'minimum_severity=Info' \
+               -F 'active=true' \
+               -F 'verified=true' \
+               -F 'scan_type=Snyk Scan' \
                -F 'file=@snyk-results.json;type=application/json' \
                -F 'product_name=DevSecOps pipeline reports' \
                -F 'engagement_name=Vulnerability assessment' \
