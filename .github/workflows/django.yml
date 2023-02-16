@@ -145,7 +145,7 @@ jobs:
         with:
           name: Safety
           path: oast-results.json
-        if: always()                        # what is this for?
+        if: always()                        # what is this for
 
   oast-backend-bandit:
     name: SAST-Backend-Job-Python-Bandit
