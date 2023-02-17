@@ -216,7 +216,21 @@ jobs:
           name: Snyk               
           path: snyk-results.json
         if: always()
-  
+        
+  Nikto:
+     name: Nikto Scan
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout code
+         uses: actions/checkout@v2
+       - name: Run Nikto Scan
+         run: docker run --rm -v $(pwd):/workdir jbarone/nikto -h http://3.108.44.52:8080 -Format json -output /workdir/nikto-report.json
+       - name: Upload Nikto Report
+         uses: actions/upload-artifact@v2
+         with:
+           name: nikto-report
+           path: nikto-report.json
+         
   import-scan-results:
     name: Import Scan Results
     runs-on: ubuntu-latest
