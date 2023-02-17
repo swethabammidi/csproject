@@ -224,7 +224,7 @@ jobs:
        - name: Checkout code
          uses: actions/checkout@v2
        - name: Run Nikto Scan
-         run: docker run --rm -v $(pwd):/workdir jbarone/nikto -h http://3.108.44.52:8080 -Format json -output /workdir/nikto-report.json
+         run: docker run --rm -v $(pwd):/workdir sullo/nikto -h http://3.108.44.52:8080 -Format json -output /workdir/nikto-report.json
        - name: Upload Nikto Report
          uses: actions/upload-artifact@v2
          with:
