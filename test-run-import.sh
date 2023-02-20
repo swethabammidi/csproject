@@ -16,7 +16,7 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
-  -H 'X-CSRFTOKEN: xjzuPkDwJQJ2MYCypdA9LTVWD26zBxkAjMoiZeUWNucFpk9mtm7cWhGPJI4HjaCT' \
+  -H 'X-CSRFToken: CSRFToken' \
   -F 'minimum_severity=Info' \
   -F 'active=true' \
   -F 'verified=true' \
@@ -36,7 +36,7 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
-  -H 'X-CSRFTOKEN: xjzuPkDwJQJ2MYCypdA9LTVWD26zBxkAjMoiZeUWNucFpk9mtm7cWhGPJI4HjaCT' \
+  -H 'X-CSRFToken: CSRFToken' \
   -F 'minimum_severity=Info' \
   -F 'active=true' \
   -F 'verified=true' \
