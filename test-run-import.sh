@@ -3,6 +3,7 @@
 # Define variables
 export URL="http://3.108.44.52:8080/api/v2/import-scan/"
 export TOKEN="e596a9d6f75615c59f0a80b4afa7acf695e8df61"
+export X-CSRFTOKEN="xjzuPkDwJQJ2MYCypdA9LTVWD26zBxkAjMoiZeUWNucFpk9mtm7cWhGPJI4HjaCT"
 export SEVERITY="Info"
 export #SCAN_TYPE="oast-results Scan"
 export #FILE_PATH="oast-results.json"
@@ -15,6 +16,7 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+  -H 'X-CSRFTOKEN: xjzuPkDwJQJ2MYCypdA9LTVWD26zBxkAjMoiZeUWNucFpk9mtm7cWhGPJI4HjaCT' \
   -F 'minimum_severity=Info' \
   -F 'active=true' \
   -F 'verified=true' \
@@ -34,6 +36,7 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+  -H 'X-CSRFTOKEN: xjzuPkDwJQJ2MYCypdA9LTVWD26zBxkAjMoiZeUWNucFpk9mtm7cWhGPJI4HjaCT' \
   -F 'minimum_severity=Info' \
   -F 'active=true' \
   -F 'verified=true' \
