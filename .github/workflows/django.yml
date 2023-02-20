@@ -244,6 +244,19 @@ jobs:
         run: |
           chmod 755 test-run-import.sh
           bash test-run-import.sh
+      
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.2
+        with:
+          # Artifact name
+          name: npm audit
+          # Destination path
+          path: .
+
+      - name: Run Import 
+        run: |
+          chmod 755 test-run-import.sh
+          bash test-run-import.sh
           
   dev-deployment:
     name: DevDeployment
