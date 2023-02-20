@@ -49,3 +49,22 @@ curl -X 'POST' \
   -F 'close_old_findings_product_scope=false' \
   -F 'push_to_jira=false' \
   -F 'create_finding_groups_for_all_findings=true'
+  
+  curl -X 'POST' \
+  'http://3.108.44.52:8080/api/v2/import-scan/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+  -H 'X-CSRFToken: CSRFToken' \
+  -F 'minimum_severity=Info' \
+  -F 'active=true' \
+  -F 'verified=true' \
+  -F 'scan_type=NPM Audit Scan' \
+  -F 'file=@node-audit-results;type=application/json' \
+  -F 'product_name=Test product' \
+  -F 'engagement_name=NPM Audit Scan' \
+  -F 'engagement=4' \
+  -F 'close_old_findings=false' \
+  -F 'close_old_findings_product_scope=false' \
+  -F 'push_to_jira=false' \
+  -F 'create_finding_groups_for_all_findings=true'
