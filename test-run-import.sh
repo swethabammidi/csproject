@@ -60,7 +60,7 @@ curl -X 'POST' \
     -F 'active=true' \
     -F 'verified=true' \
     -F 'scan_type=Nikto Scan' \
-    -F 'file=@scan.txt;type=text/plain' \
+    -F 'file=@scan.xml;type=text/xml' \
     -F 'product_name=Test product' \
     -F 'engagement_name=Nikto Scan' \
     -F 'engagement=8' \
