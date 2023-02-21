@@ -179,7 +179,7 @@ jobs:
        #sudo apt-get install nikto
        git clone https://github.com/sullo/nikto
        cd nikto/program
-       ./nikto.pl -h https://www.netspi.com/ -o nikto.json
+       ./nikto.pl -h 34.123.201.87 -o nikto.json
        
     #- name: Create Nikto artifact directory
     #  run: mkdir nikto-artifacts
