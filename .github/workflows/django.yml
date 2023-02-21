@@ -185,7 +185,7 @@ jobs:
     #  run: mkdir nikto-artifacts
            
     - name: Run Nikto scan
-      run: nikto -h 34.123.201.87 -o scan.txt
+      run: nikto -h 34.123.201.87 -o scan.xml
       #run: nikto -h 34.123.201.87 -Format json -output 'nikto-output.json'
       # run: nikto -h 34.123.201.87 -Format json -o nikto-artifacts/nikto.json
       
@@ -193,7 +193,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.1
       with:
        name: nikto-results
-       path: scan.txt
+       path: scan.xml
    
    
   #hydra_scan:
@@ -294,13 +294,13 @@ jobs:
           # Destination path
           path: .
           
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v3.0.2
-        with:
+      #- name: Download a Build Artifact
+       #  uses: actions/download-artifact@v3.0.2
+       # with:
           # Artifact name
-          name: nikto-results
+        #  name: nikto-results
           # Destination path
-          path: .
+         # path: .
     
       - name: Run Import 
         run: |
