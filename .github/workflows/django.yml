@@ -175,14 +175,17 @@ jobs:
     
     - name: Install Nikto
       run: |
-       sudo apt-get update
-       sudo apt-get install nikto
+       #sudo apt-get update
+       #sudo apt-get install nikto
+       git clone https://github.com/sullo/nikto
+       cd nikto/program
+       ./nikto.pl -h https://www.netspi.com/ -o $(Build.ArtifactStagingDirectory)/nikto.json
        
-    - name: Create Nikto artifact directory
-      run: mkdir nikto-artifacts
+    #- name: Create Nikto artifact directory
+    #  run: mkdir nikto-artifacts
            
-    - name: Run Nikto scan
-      run: nikto -h www.netspi.com -Format json -o nikto.json
+  #  - name: Run Nikto scan
+  #    run: nikto -h www.netspi.com -Format json -o nikto.json
       # run: nikto -h www.netspi.com -Format json -o nikto-artifacts/nikto.json
       
     - name: Create Nikto artifact
