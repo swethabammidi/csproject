@@ -20,27 +20,41 @@ jobs:
         with:
           name: Truffle Hog Output
           path: trufflehog-results.json
+ 
 
+  #docker-lint:
+    #name: LintChecking-Docker-Hadolint
+    #runs-on: ubuntu-latest
+    #needs: secret-scanning
+    #steps:
+     # - uses: actions/checkout@v3
 
+     # - name: Run Hadolint
+        #run: docker run --rm -i hadolint/hadolint < Dockerfile | tee hadolint-result.txt
+        #run: docker run --rm -i hadolint/hadolint < Dockerfile | tee hadolint-result.json
+             
+     # - name: Upload the artifacts
+     #   uses: actions/upload-artifact@v3.1.1
+     #   with:
+     #     name: hadolint-result
+      #    path: hadolint-result.json
+      
   docker-lint:
     name: LintChecking-Docker-Hadolint
     runs-on: ubuntu-latest
-    needs: secret-scanning
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Run Hadolint
-        #run: docker run --rm -i hadolint/hadolint < Dockerfile | tee hadolint-result.txt
-        #run: docker run --rm -i hadolint/hadolint < Dockerfile | tee hadolint-result.json
-        run: docker run --rm -v $(pwd):/src hadolint/hadolint --json --regex --entropy=False file:///src > hadolint-result.json
-        continue-on-error: true
+      - name: Install Hadolint
+        run: docker pull hadolint/hadolint:latest
+        
+      - name: Run Hadolint  
+        run: docker run --rm -i hadolint/hadolint < Dockerfile | hadolint --format=json > hadolint-output.json
       
-      - name: Upload the artifacts
+      - name: Save Hadolint output
         uses: actions/upload-artifact@v3.1.1
         with:
-          name: hadolint-result
-          path: hadolint-result.json
-
+          name: hadolint-output
+          path: hadolint-output.json
+          
   component-analysis:
     name: ComponentAnalysis-Node-NPMAudit
     runs-on: ubuntu-latest
