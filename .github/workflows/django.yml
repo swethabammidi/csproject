@@ -168,10 +168,7 @@ jobs:
   nikto-scan:
     name: Nikto Scan
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: uploads
-         
+           
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -183,8 +180,7 @@ jobs:
        
     - name: Create Nikto artifact directory
       run: mkdir nikto-artifacts
-           cd nikto-artifacts
-
+           
     - name: Run Nikto scan
       run: nikto -h www.netspi.com -Format json -o nikto.json
       # run: nikto -h www.netspi.com -Format json -o nikto-artifacts/nikto.json
