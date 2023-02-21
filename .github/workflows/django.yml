@@ -39,8 +39,8 @@ jobs:
           name: hadolint-result
           path: hadolint-result.json
           
-  NPM-Audit:
-    name: npm-audit
+  component-analysis:
+    name: ComponentAnalysis-Node-NPMAudit
     runs-on: ubuntu-latest
     needs: docker-lint
     steps:
