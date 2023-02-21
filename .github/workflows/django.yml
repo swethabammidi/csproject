@@ -185,7 +185,8 @@ jobs:
     #  run: mkdir nikto-artifacts
            
     - name: Run Nikto scan
-      run: nikto -h 34.123.201.87 -Format json -output 'nikto-output.json'
+      run: nikto -h 34.123.201.87 -o scan.txt
+      #run: nikto -h 34.123.201.87 -Format json -output 'nikto-output.json'
       # run: nikto -h 34.123.201.87 -Format json -o nikto-artifacts/nikto.json
       
     - name: Create Nikto artifact
