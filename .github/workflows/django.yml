@@ -52,11 +52,11 @@ jobs:
         run: npm install
 
       - name: Perform Node.js Audit and Output to Json file
-        run: npm audit --json >> node-audit-results.json
+        run: npm audit --json > node-audit-results.json
         continue-on-error: true
 
-      - name: List the files available
-        run: ls
+      #- name: List the files available
+      #  run: ls
       
       - name: Upload the Output as an artifact
         uses: actions/upload-artifact@v3.1.1
