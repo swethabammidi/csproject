@@ -193,7 +193,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.1
       with:
        name: nikto-results
-       path: nikto.json
+       path: scan.txt
    
    
   #hydra_scan:
