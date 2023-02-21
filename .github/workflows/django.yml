@@ -53,6 +53,7 @@ jobs:
         run: |
          npm install
          npm i --package-lock-only
+         npm audit fix --force
 
       - name: Perform Node.js Audit and Output to Json file
         #run: npm audit --json > node-audit-results.json
