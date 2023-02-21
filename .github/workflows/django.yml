@@ -293,7 +293,15 @@ jobs:
           name: RetireJS
           # Destination path
           path: .
-
+          
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.2
+        with:
+          # Artifact name
+          name: Nikto
+          # Destination path
+          path: .
+    
       - name: Run Import 
         run: |
           chmod 755 test-run-import.sh
