@@ -179,6 +179,7 @@ jobs:
        
     - name: Create Nikto artifact directory
       run: mkdir nikto-artifacts
+           cd nikto-artifacts
 
     - name: Run Nikto scan
       run: nikto -h www.netspi.com -Format json -o nikto-artifacts/nikto.json
