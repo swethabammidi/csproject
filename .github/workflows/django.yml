@@ -49,15 +49,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install the Libraries or Node Modules
-        #run: npm install
-        run: |
-         npm install
-         npm i --package-lock-only
-         npm audit fix --force
-
+        run: npm install
+        
       - name: Perform Node.js Audit and Output to Json file
-        #run: npm audit --json > node-audit-results.json
-        run: npm audit -o node-audit-results.xml
+        run: npm audit --json > node-audit-results.json
         continue-on-error: true
 
       #- name: List the files available
@@ -66,8 +61,8 @@ jobs:
       - name: Upload the Output as an artifact
         uses: actions/upload-artifact@v3.1.1
         with:
-          name: NodeAudit Output
-          path: node-audit-results.xml
+          name: Node-Audit-Output
+          path: node-audit-results.json
         if: always()
 
 # Integrate DefectDojo
