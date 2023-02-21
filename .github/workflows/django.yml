@@ -31,7 +31,8 @@ jobs:
 
       - name: Run Hadolint
         #run: docker run --rm -i hadolint/hadolint < Dockerfile | tee hadolint-result.txt
-        run: docker run --rm -i hadolint/hadolint < Dockerfile | tee hadolint-result.json
+        #run: docker run --rm -i hadolint/hadolint < Dockerfile | tee hadolint-result.json
+        run: docker run --rm -v $(pwd):/src hadolint/hadolint --json --regex --entropy=False file:///src > hadolint-result.json
         continue-on-error: true
       
       - name: Upload the artifacts
