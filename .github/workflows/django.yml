@@ -49,8 +49,7 @@ jobs:
       
     - name: Install the Libraries or Node Modules
       run: npm install -g npm@6
-           npm install --package-lock-only
-      
+                 
     - name: Perform Node.js Audit and Output to Json file
       run: npm audit --json > node-audit-results.json
       continue-on-error: true
