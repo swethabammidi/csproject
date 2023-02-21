@@ -38,32 +38,52 @@ jobs:
         with:
           name: hadolint-result
           path: hadolint-result.json
-      
-           
-  component-analysis:
-    name: ComponentAnalysis-Node-NPMAudit
+          
+  NPM-Audit:
+    name: npm-audit
     runs-on: ubuntu-latest
     needs: docker-lint
     steps:
-      - name: Checkout the Code
+      - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Install the Libraries or Node Modules
-        run: npm install
         
-      - name: Perform Node.js Audit and Output to Json file
-        run: npm audit --json > node-audit-results.json
-        continue-on-error: true
+      - name: Install dependencies  
+        run: npm install
+      
+      - name: Run NPM audit
+        run: npm audit --xml > audit-report.xml
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: npm-audit-report
+          path: audit-report.xml
+           
+  #component-analysis:
+   # name: ComponentAnalysis-Node-NPMAudit
+   # runs-on: ubuntu-latest
+   # needs: docker-lint
+   # steps:
+    #  - name: Checkout the Code
+     #   uses: actions/checkout@v3
+
+    #  - name: Install the Libraries or Node Modules
+    #    run: npm install
+        
+     # - name: Perform Node.js Audit and Output to Json file
+    #    run: npm audit --json > node-audit-results.json
+     #   continue-on-error: true
 
       #- name: List the files available
       #  run: ls
       
-      - name: Upload the Output as an artifact
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: Node-Audit-Output
-          path: node-audit-results.json
-        if: always()
+    #  - name: Upload the Output as an artifact
+    #    uses: actions/upload-artifact@v3.1.1
+    #    with:
+    #      name: Node-Audit-Output
+     #     path: node-audit-results.json
+     #   if: always()
+     
 
 # Integrate DefectDojo
   #invoke-python-script:
