@@ -57,6 +57,9 @@ jobs:
       
     -  name: List the files available
        run: ls
+       
+    - name: Print current directory
+      run: pwd && ls -al   
     
     - name: Upload the Output as an artifact
       uses: actions/upload-artifact@v3.1.1
