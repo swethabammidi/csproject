@@ -164,29 +164,54 @@ jobs:
         with:
           name: Bandit Output
           path: bandit-results.json
-          
-  hydra_scan:
-    name: Hydra Scan and Artifact
+   
+  nikto-scan:
+    name: Nikto Scan
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-  
-    - name: Install Hydra
+      uses: actions/checkout@v3
+    
+    - name: Install Nikto
       run: |
        sudo apt-get update
-       sudo apt-get install -y hydra
-    - name: Run Hydra scan
-      run: |
-       hydra -L /home/ubuntu/Hydra/usernames.txt -P /home/ubuntu/Hydra/passwords.txt ftp://3.108.44.52:8080
-       hydra -L /home/ubuntu/Hydra/usernames.txt -P /home/ubuntu/Hydra/passwords.txt ssh://3.108.44.52:8080
-       hydra -L /home/ubuntu/Hydra/usernames.txt -P /home/ubuntu/Hydra/passwords.txt smtp://3.108.44.52:8080
+       sudo apt-get install nikto
        
-    - name: Save Hydra output as JSON artifact   
-      uses: actions/upload-artifact@v2
+    - name: Create Nikto artifact directory
+      run: mkdir nikto-artifacts
+
+    - name: Run Nikto scan
+      run: nikto -h www.netspi.com -Format json -output nikto-artifacts/nikto.json
+      
+    - name: Create Nikto artifact
+      uses: actions/upload-artifact@v3.1.1
       with:
-       name: hydra-scan-results
-       path: hydra.json
+       name: nikto-results
+       path: nikto-artifacts/nikto.json
+   
+   
+  #hydra_scan:
+   # name: Hydra Scan and Artifact
+    #runs-on: ubuntu-latest
+    #steps:
+    #- name: Checkout code
+    #  uses: actions/checkout@v2
+  
+    #- name: Install Hydra
+     # run: |
+      # sudo apt-get update
+      # sudo apt-get install -y hydra
+    #- name: Run Hydra scan
+     # run: |
+      # hydra -L /home/ubuntu/Hydra/usernames.txt -P /home/ubuntu/Hydra/passwords.txt ftp://3.108.44.52:8080
+       #hydra -L /home/ubuntu/Hydra/usernames.txt -P /home/ubuntu/Hydra/passwords.txt ssh://3.108.44.52:8080
+       #hydra -L /home/ubuntu/Hydra/usernames.txt -P /home/ubuntu/Hydra/passwords.txt smtp://3.108.44.52:8080
+       
+    #- name: Save Hydra output as JSON artifact   
+    #  uses: actions/upload-artifact@v2
+     # with:
+      # name: hydra-scan-results
+      # path: hydra.json
        
   oast-frontend-retirejs:
     name: SAST-Frontend-Job-NodeJS-RetireJS
