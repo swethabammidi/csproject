@@ -50,7 +50,9 @@ jobs:
 
       - name: Install the Libraries or Node Modules
         #run: npm install
-        run: npm install npm@latest -g
+        run: |
+         npm install -g npm
+         npm audit
 
       - name: Perform Node.js Audit and Output to Json file
         run: npm audit --json > node-audit-results.json
