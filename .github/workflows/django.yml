@@ -168,6 +168,7 @@ jobs:
   nikto-scan:
     name: Nikto Scan
     runs-on: ubuntu-latest
+         
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -177,9 +178,9 @@ jobs:
        sudo apt-get update
        sudo apt-get install nikto
        
-    #- name: Create Nikto artifact directory
-    #  run: mkdir nikto-artifacts
-    #       cd nikto-artifacts
+    - name: Create Nikto artifact directory
+      run: mkdir nikto-artifacts
+           cd nikto-artifacts
 
     - name: Run Nikto scan
       run: nikto -h www.netspi.com -Format json -o nikto.json
