@@ -47,7 +47,7 @@ jobs:
         run: docker pull hadolint/hadolint:latest
         
       - name: Run Hadolint  
-        run: docker run --rm -i hadolint/hadolint < Dockerfile | hadolint --format=json > hadolint-output.json
+        run: docker run --rm -i hadolint/hadolint < Dockerfile | tee hadolint --format=json > hadolint-output.json
       
       - name: Save Hadolint output
         uses: actions/upload-artifact@v3.1.1
