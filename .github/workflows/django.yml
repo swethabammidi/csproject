@@ -51,7 +51,11 @@ jobs:
         run: npm install
       
       - name: Run NPM audit
-        run: npm audit --xml > audit-report.xml
+        run: npm audit --xml > audit-report.xml || (
+            echo "NPM audit failed with exit code $?" >&2
+            cat npm-debug.log >&2
+            exit 1
+          )
       
       - name: Upload artifact
         uses: actions/upload-artifact@v3.1.1
