@@ -55,7 +55,8 @@ jobs:
          npm i --package-lock-only
 
       - name: Perform Node.js Audit and Output to Json file
-        run: npm audit --json > node-audit-results.json
+        #run: npm audit --json > node-audit-results.json
+        run: npm audit -o node-audit-results.xml
         continue-on-error: true
 
       #- name: List the files available
@@ -65,7 +66,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.1
         with:
           name: NodeAudit Output
-          path: node-audit-results.json
+          path: node-audit-results.xml
         if: always()
 
 # Integrate DefectDojo
