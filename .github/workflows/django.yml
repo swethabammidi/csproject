@@ -177,18 +177,19 @@ jobs:
        sudo apt-get update
        sudo apt-get install nikto
        
-    - name: Create Nikto artifact directory
-      run: mkdir nikto-artifacts
-           cd nikto-artifacts
+    #- name: Create Nikto artifact directory
+    #  run: mkdir nikto-artifacts
+    #       cd nikto-artifacts
 
     - name: Run Nikto scan
-      run: nikto -h www.netspi.com -Format json -o nikto-artifacts/nikto.json
+      run: nikto -h www.netspi.com -Format json -o nikto.json
+      # run: nikto -h www.netspi.com -Format json -o nikto-artifacts/nikto.json
       
     - name: Create Nikto artifact
       uses: actions/upload-artifact@v3.1.1
       with:
        name: nikto-results
-       path: nikto-artifacts/nikto.json
+       path: nikto.json
    
    
   #hydra_scan:
