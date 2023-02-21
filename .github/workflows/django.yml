@@ -294,13 +294,13 @@ jobs:
           # Destination path
           path: .
           
-      #- name: Download a Build Artifact
-       #  uses: actions/download-artifact@v3.0.2
-       # with:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.2
+        with:
           # Artifact name
-        #  name: nikto-results
+          name: nikto-results
           # Destination path
-         # path: .
+          path: .
     
       - name: Run Import 
         run: |
