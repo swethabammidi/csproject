@@ -164,7 +164,30 @@ jobs:
         with:
           name: Bandit Output
           path: bandit-results.json
-
+          
+  hydra_scan:
+    name: Hydra Scan and Artifact
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+  
+    - name: Install Hydra
+      run: |
+       sudo apt-get update
+       sudo apt-get install -y hydra
+    - name: Run Hydra scan
+      run: |
+       hydra -L usernames.txt -P passwords.txt ftp://3.108.44.52:8080
+       hydra -L usernames.txt -P passwords.txt ssh://3.108.44.52:8080
+       hydra -L usernames.txt -P passwords.txt smtp://3.108.44.52:8080
+       
+    - name: Save Hydra output as JSON artifact   
+      uses: actions/upload-artifact@v2
+      with:
+       name: hydra-scan-results
+       path: hydra.json
+       
   oast-frontend-retirejs:
     name: SAST-Frontend-Job-NodeJS-RetireJS
     runs-on: ubuntu-latest
