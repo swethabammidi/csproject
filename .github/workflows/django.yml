@@ -152,48 +152,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install Python and Bandit
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          
+        
       - name: Run Bandit
         run: docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f json > bandit-results.json
         continue-on-error: true
-        
-      - name: Install bandit-sarif-formatter
-        run: |
-          pip install bandit-sarif-formatter
-          
-     # - name: Run Bandit
-     #   run: bandit -r . -f json -o bandit-results.json || true
-        
-      - name: Convert Bandit JSON to SARIF
-        #run: docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif  
-        run: |
-          bandit-sarif-formatter -i bandit-results.json -o bandit-results.sarif
-        
-      - name: Upload SARIF report as an artifact
+
+      - name: Upload the Output as an artifact
         uses: actions/upload-artifact@v3.1.1
         with:
-          name: Bandit SARIF Report
-          path: bandit-results.sarif  
-          
-      #- name: Run Bandit
-      #  run: |
-      #    docker run --rm -v $(pwd):/src bandit/bandit bandit --recursive --format json --output bandit-results.json /src
-      #  continue-on-error: true
-        
-     # - name: Convert Bandit output to SARIF
-     #   run: |
-     #    docker run --rm -v $(pwd):/src \
-     #     bandit-sarif-formatter:1.1.1 \
-     #     bandit-sarif-formatter --input bandit-results.json --output bandit-results.sarif
-   
-     # - name: Upload SARIF report to Code Scanning
-     #   uses: github/codeql-action/upload-sarif@v1
-     #   with:
-     #    sarif_file: bandit-results.sarif
+          name: Bandit Output
+          path: bandit-results.json
          
   nikto-scan:
     name: Nikto Scan
