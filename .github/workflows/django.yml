@@ -158,7 +158,7 @@ jobs:
           python-version: '3.9'
       - name: Install bandit-sarif-formatter
         run: |
-          pip install bandit-sarif-formatter=1.1.1  
+          pip install bandit-sarif-formatter==1.1.1  
           
       - name: Run Bandit
         run: bandit -r . -f json -o bandit-results.json || true
