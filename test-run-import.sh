@@ -81,8 +81,8 @@ curl -X 'POST' \
     -F 'scan_type=Nmap Scan' \
     -F 'file=@nmap-results.xml;type=text/xml' \
     -F 'product_name=Test product' \
-    -F 'engagement_name=NMAP Scan' \
-    -F 'engagement=13' \
+    -F 'engagement_name=NMAP Scan19' \
+    -F 'engagement=19' \
     -F 'close_old_findings=false' \
     -F 'close_old_findings_product_scope=false' \
     -F 'push_to_jira=jira' \
