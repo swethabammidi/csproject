@@ -35,7 +35,7 @@ curl -X 'POST' \
   -F 'push_to_jira=true' \
   -F 'create_finding_groups_for_all_findings=true'
 
-echo $file
+echo '\n'
 echo 'Before Retire JS Scan'
 
 curl -X 'POST' \
@@ -57,7 +57,7 @@ curl -X 'POST' \
   -F 'push_to_jira=true' \
   -F 'create_finding_groups_for_all_findings=true'
   
-  echo $file
+  echo '\n'
   echo 'Before Nikito Scan'
   
   curl -X 'POST' \
@@ -79,7 +79,7 @@ curl -X 'POST' \
     -F 'push_to_jira=true' \
     -F 'create_finding_groups_for_all_findings=true'
   
-  echo $file
+  echo '\n'
   echo 'Before NMAP Scan'
     
   curl -X 'POST' \
@@ -98,7 +98,7 @@ curl -X 'POST' \
     -F 'engagement=19' \
     -F 'close_old_findings=false' \
     -F 'close_old_findings_product_scope=false' \
-    -F 'push_to_jira=jira' \
+    -F 'push_to_jira=true' \
     -F 'create_finding_groups_for_all_findings=true'
     
-  echo $file
+  echo '\n'
