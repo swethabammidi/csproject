@@ -158,7 +158,8 @@ jobs:
         continue-on-error: true
         
       - name: Convert to SARIF format
-        run: docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif
+        run: docker pull r2cdevtools/bandit2sarif
+             docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif
         
 
       - name: Upload the Output as an artifact
