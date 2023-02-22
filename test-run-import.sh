@@ -10,6 +10,10 @@ export #FILE_PATH="oast-results.json"
 export PRODUCT_NAME="Test product"
 export ENGAGEMENT_NAME="test_bandit-scan"
 export ENGAGEMENT_ID="3"
+export file="scan name.xml"
+
+echo $file
+echo 'Before Bandit Scan'
 
 curl -X 'POST' \
   'http://3.108.44.52:8080/api/v2/import-scan/' \
@@ -31,6 +35,9 @@ curl -X 'POST' \
   -F 'push_to_jira=true' \
   -F 'create_finding_groups_for_all_findings=true'
 
+echo $file
+echo 'Before Retire JS Scan'
+
 curl -X 'POST' \
   'http://3.108.44.52:8080/api/v2/import-scan/' \
   -H 'accept: application/json' \
@@ -50,6 +57,9 @@ curl -X 'POST' \
   -F 'push_to_jira=true' \
   -F 'create_finding_groups_for_all_findings=true'
   
+  echo $file
+  echo 'Before Nikito Scan'
+  
   curl -X 'POST' \
     'http://3.108.44.52:8080/api/v2/import-scan/' \
     -H 'accept: application/json' \
@@ -68,8 +78,11 @@ curl -X 'POST' \
     -F 'close_old_findings_product_scope=false' \
     -F 'push_to_jira=true' \
     -F 'create_finding_groups_for_all_findings=true'
+  
+  echo $file
+  echo 'Before NMAP Scan'
     
-    curl -X 'POST' \
+  curl -X 'POST' \
     'http://3.108.44.52:8080/api/v2/import-scan/' \
     -H 'accept: application/json' \
     -H 'Content-Type: multipart/form-data' \
@@ -87,3 +100,5 @@ curl -X 'POST' \
     -F 'close_old_findings_product_scope=false' \
     -F 'push_to_jira=jira' \
     -F 'create_finding_groups_for_all_findings=true'
+    
+  echo $file
