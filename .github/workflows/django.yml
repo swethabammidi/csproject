@@ -166,7 +166,7 @@ jobs:
   nikto-scan:
     name: Nikto Scan
     runs-on: ubuntu-latest
-           
+    needs: functional-testing       
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -196,6 +196,7 @@ jobs:
   nmap-scan:
     name: NMAP Scan
     runs-on: ubuntu-latest
+    needs: functional-testing
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
