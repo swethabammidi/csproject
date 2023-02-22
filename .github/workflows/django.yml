@@ -153,29 +153,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Install Python and Bandit
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-        run: |
-          pip install bandit
-
       - name: Run Bandit
-        run: bandit -r src -f json -o bandit-results.json  
-       
-      - name: Install bandit-sarif-formatter
-        run: pip install bandit-sarif-formatter
-      
+        run: |
+          docker run --rm -v $(pwd):/src bandit/bandit bandit --recursive --format json --output bandit-results.json /src
+        continue-on-error: true
+        
       - name: Convert Bandit output to SARIF
         run: |
-          bandit-sarif-formatter -i bandit-results.json -o bandit-results.sarif
-
-      - name: Upload SARIF report
+         docker run --rm -v $(pwd):/src \
+          bandit-sarif-formatter:1.1.1 \
+          bandit-sarif-formatter --input bandit-results.json --output bandit-results.sarif
+   
+      - name: Upload SARIF report to Code Scanning
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: bandit-results.sarif
-      
-   
+         sarif_file: bandit-results.sarif
+         
   nikto-scan:
     name: Nikto Scan
     runs-on: ubuntu-latest
