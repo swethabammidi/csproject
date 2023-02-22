@@ -225,7 +225,22 @@ jobs:
        name: nikto-results
        path: scan.xml
    
-   
+  nmap-scan:
+    name: NMAP Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install NMAP
+        run: sudo apt-get update && sudo apt-get install -y nmap
+      - name: Run NMAP scan
+        run: nmap -oX nmap-results.xml 34.123.201.87
+      - name: Save NMAP results
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: nmap-results
+          path: nmap-results.xml
+          
   #hydra_scan:
    # name: Hydra Scan and Artifact
     #runs-on: ubuntu-latest
