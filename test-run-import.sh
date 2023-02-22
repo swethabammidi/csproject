@@ -79,7 +79,7 @@ curl -X 'POST' \
     -F 'active=true' \
     -F 'verified=true' \
     -F 'scan_type=Nmap Scan' \
-    -F 'file=@scan.xml;type=text/xml' \
+    -F 'file=@nmap-results.xml;type=text/xml' \
     -F 'product_name=Test product' \
     -F 'engagement_name=NMAP Scan' \
     -F 'engagement=13' \
