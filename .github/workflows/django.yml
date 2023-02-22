@@ -157,11 +157,13 @@ jobs:
         run: docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f json > bandit-results.json
         continue-on-error: true
         
-      - name: Convert to SARIF format
+      - name: Docker pull
         run: docker pull r2cdevtools/bandit2sarif
-             docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif
         
-
+      - name: Convert to SARIF format
+        run: docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif
+             
+     
       - name: Upload the Output as an artifact
         uses: actions/upload-artifact@v3.1.1
         with:
