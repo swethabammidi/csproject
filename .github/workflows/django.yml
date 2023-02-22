@@ -158,13 +158,15 @@ jobs:
           python-version: '3.9'
       - name: Install bandit-sarif-formatter
         run: |
-          pip install bandit-sarif-formatter  
+          pip install bandit-sarif-formatter=1.1.1  
           
       - name: Run Bandit
         run: bandit -r . -f json -o bandit-results.json || true
         
       - name: Convert Bandit JSON to SARIF
-        run: docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif  
+        #run: docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif  
+        run: |
+          bandit-sarif-formatter -i bandit-results.json -o bandit-results.sarif
         
       - name: Upload SARIF report as an artifact
         uses: actions/upload-artifact@v3.1.1
