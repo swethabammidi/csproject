@@ -284,7 +284,7 @@ jobs:
           path: snyk-results.json
         if: always()
              
-  import-scan-results:
+  export-scan-results:
     name: Import Scan Results
     runs-on: ubuntu-latest
     needs: [oast-backend-safety, oast-backend-bandit, oast-frontend-retirejs, oast-snyk, nmap-scan, nikto-scan]
@@ -331,7 +331,7 @@ jobs:
   dev-deployment:
     name: DevDeployment
     runs-on: ubuntu-latest
-    needs: [oast-backend-safety, oast-backend-bandit, oast-frontend-retirejs, oast-snyk, import-scan-results]
+    needs: [oast-backend-safety, oast-backend-bandit, oast-frontend-retirejs, oast-snyk, export-scan-results]
     steps:
       - name: Sleep for 10 seconds
         run: sleep 10
