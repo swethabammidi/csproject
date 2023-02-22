@@ -49,7 +49,11 @@ jobs:
       
     - name: Install the Libraries or Node Modules
       #run: npm install -g npm@6
-      run: npm install -g npm-check-updates
+      run: npm i --package-lock-only
+           npm config get package-lock
+           npm config get shrinkwrap
+           npm i --package-lock-only
+           npm audit fix
                       
     - name: Perform Node.js Audit and Output to Json file
       run: npm audit --json > node-audit-results.json
