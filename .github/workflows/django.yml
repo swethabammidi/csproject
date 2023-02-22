@@ -164,7 +164,7 @@ jobs:
         run: bandit -r . -f json -o bandit-results.json || true
         
       - name: Convert Bandit JSON to SARIF
-        run: docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif  
+        run: docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif:local bandit-results.json > bandit-results.sarif  
         
       - name: Upload SARIF report as an artifact
         uses: actions/upload-artifact@v3.1.1
