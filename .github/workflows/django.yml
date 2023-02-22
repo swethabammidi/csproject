@@ -165,8 +165,8 @@ jobs:
         run: |
           pip install bandit-sarif-formatter==1.1.1  
           
-      - name: Run Bandit
-        run: bandit -r . -f json -o bandit-results.json || true
+     # - name: Run Bandit
+     #   run: bandit -r . -f json -o bandit-results.json || true
         
       - name: Convert Bandit JSON to SARIF
         #run: docker run --rm -v $(pwd):/src r2cdevtools/bandit2sarif bandit-results.json > bandit-results.sarif  
