@@ -70,7 +70,39 @@ jobs:
         name: Node-Audit-Output
         path: node-audit-results.json
       if: always()
-   
+      
+  fortify_scan:
+    runs-on: ubuntu-latest
+    needs: docker-lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
+       
+      - name: Install Fortify Scan
+        run: |
+          wget -O fortify.zip https://download.software.microfocus.com/microfocus/fortify-scacli-codeanalyzer/2021.1/fortify-sca-2021.1.0.zip
+          unzip -q fortify.zip -d /opt
+        env:
+          SCA_HOME: /opt/Fortify/20.1/bin
+      - name: Build project
+        run: mvn clean package
+
+      - name: Fortify Scan
+        run: |
+          sourceanalyzer -b MyProject -cp target/*.jar -source 1.8 -Xmx2048m
+          sourceanalyzer -b MyProject -scan -f MyProject.xml
+
+      - name: Upload scan results
+        uses: actions/upload-artifact@v2
+        with:
+          name: fortify-scan-results
+          path: MyProject.xml
+          
 # Integrate DefectDojo
   #invoke-python-script:
   #  name: DefectDojoIntegration
