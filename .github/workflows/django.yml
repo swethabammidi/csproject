@@ -228,7 +228,8 @@ jobs:
         run: sudo npm install -g yarn
         
       - name: Run yarn install
-        run: yarn install  
+        run: |
+         yarn install  
        
       - name: Run Yarn audit scan and save to JSON
         run: |
