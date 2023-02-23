@@ -235,7 +235,7 @@ jobs:
         run: yarn install --ignore-engines
       
       - name: Run Yarn Audit
-        run: yarn audit --json > report.json
+        run: yarn audit 
 
       
 
