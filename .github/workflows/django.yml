@@ -222,7 +222,7 @@ jobs:
       - name: Install Node.js and npm
         uses: actions/setup-node@v2
         with:
-         node-version: '14.x' 
+         node-version: '4.4.x' 
       
       - name: Install Yarn
         run: sudo npm install -g yarn
@@ -234,11 +234,11 @@ jobs:
         run: |
          yarn audit --json > yarn-audit-report.json
         
-      - name: Upload report to artifacts
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: yarn-audit-report
-          path: yarn-audit-report.json 
+      #- name: Upload report to artifacts
+      #  uses: actions/upload-artifact@v3.1.1
+      #  with:
+      #    name: yarn-audit-report
+      #    path: yarn-audit-report.json 
 
   #hydra_scan:
    # name: Hydra Scan and Artifact
