@@ -222,7 +222,7 @@ jobs:
        run: |
           sudo apt-get update
           sudo apt-get install -y openjdk-8-jdk
-          wget -q -O - https://raw.githubusercontent.com/zaproxy/zaproxy/main/ZAP_2.10.0_Linux.tar.gz | tar -xzf
+          wget -q -O - -L https://github.com/zaproxy/zaproxy/releases/download/v2.10.0/ZAP_2.10.0_Linux.tar.gz | tar -xzvf ZAP_2.10.0_Linux.tar.gz 
           cd ZAP_2.10.0
           java -jar zap-2.10.0.jar -daemon
      - name: Run ZAP scan    
