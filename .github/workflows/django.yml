@@ -256,7 +256,7 @@ jobs:
         with:
           name: RetireJS
           path: retirejs-report.json
-        if: always()                        # what is this for?
+        if: always()                        # what is this for
 
   oast-snyk:
     name: SecretScanning-NodeJS-Synk
