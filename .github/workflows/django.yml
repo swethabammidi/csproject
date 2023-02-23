@@ -219,25 +219,24 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: Use Node.js v4.4.x
+        uses: actions/setup-node@v2
         with:
-          node-version: '14'  
-          
-      - name: Install Yarn
-        run: npm install -g yarn  
+          node-version: '4.4.x'  
       
       - name: Install Dependencies
-        run: yarn install
+        run: |
+         yarn install
        
-      - name: Run Yarn Audit Scan
-        run: yarn audit --json > yarn_audit_report.json
+      - name: Run Yarn Audit
+        run: |
+          yarn audit --json > yarn-audit-report.json
         
-      - name: Upload Yarn Audit Report
+      - name: Upload report to artifacts
         uses: actions/upload-artifact@v3.1.1
         with:
           name: yarn-audit-report
-          path: yarn_audit_report.json 
+          path: yarn-audit-report.json 
 
   #hydra_scan:
    # name: Hydra Scan and Artifact
