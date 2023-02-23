@@ -12,6 +12,10 @@ export ENGAGEMENT_NAME="test_bandit-scan"
 export ENGAGEMENT_ID="3"
 export file="scan name.xml"
 
+pip install bandit-sarif-formatter
+bandit-sarif-formatter -o bandit-results.sarif bandit-results.json
+ls -l bandit-results.sarif bandit-results.json
+
 echo $file
 echo 'Before Bandit Scan'
 
@@ -25,7 +29,7 @@ curl -X 'POST' \
   -F 'active=true' \
   -F 'verified=true' \
   -F 'scan_type=Bandit Scan' \
-  -F 'file=@bandit-results.json;type=application/json' \
+  -F 'file=@bandit-results.sarif;type=application/sarif' \
   -F 'product_name=Test product' \
   -F 'engagement_name=test_bandit-scan' \
   -F 'engagement=3' \
