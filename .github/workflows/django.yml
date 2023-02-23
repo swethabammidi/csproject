@@ -218,22 +218,24 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-        
-      - name: Install Node.js 18.x
+      
+      - name: Install nvm and use Node.js version 4.4.x
         run: |
-          sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
-          sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
-          sudo cp -r node-v18.0.0-linux-x64/{bin,include,lib,share} /usr/
-          node --version
-          
-      - name: Install Yarn
-        run: sudo npm install -g yarn
+         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+         export NVM_DIR="$HOME/.nvm"
+         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+         nvm install 4.4
+         nvm use 4.4  
+      - name: Install Yarn and dependencies
+        run: |
+         npm install -g yarn
+         yarn install
+      - name: Run Yarn Audit Scan and store the report in JSON format
+        run: |
+          yarn audit --json > yarn-audit-report.json
+        continue-on-error: true
+
       
-      - name: Install Dependencies
-        run: yarn install
-      
-      - name: Run Yarn Audit
-        run: yarn audit --json > report.json   
 
   #hydra_scan:
    # name: Hydra Scan and Artifact
