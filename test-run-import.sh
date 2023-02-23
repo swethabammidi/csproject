@@ -12,7 +12,18 @@ export ENGAGEMENT_NAME="test_bandit-scan"
 export ENGAGEMENT_ID="3"
 export file="scan name.xml"
 
+echo '\nprinting path'
+echo $PATH
+
 pip install bandit-sarif-formatter
+
+echo 'printing bandit version from relative path'
+bandit-sarif-formatter --version
+
+echo 'printing bandit version from absolute path'
+/usr/local/bin/bandit-sarif-formatter --version
+
+
 bandit-sarif-formatter -o bandit-results.sarif bandit-results.json
 ls -l bandit-results.sarif bandit-results.json
 
