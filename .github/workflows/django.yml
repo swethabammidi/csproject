@@ -228,16 +228,17 @@ jobs:
           java -jar zap-2.10.0.jar -daemon
      - name: Run ZAP scan    
        run: |
-        zap-cli --zap-path ZAP_2.10.0/zap.sh \
+        #zap-cli --zap-path ZAP_2.10.0/zap.sh \
+        zap-cli --zap-path /opt/zaproxy quick-scan https://www.netspi.com/
                 --output-format xml \
-                --output nmap-results.xml \
+                --output zap-results.xml \
                 --spider \
                 --scan 34.123.201.87
      - name: Save ZAP results
        uses: actions/upload-artifact@v3.1.1
        with:
           name: zap-results
-          path: nmap-results.xml
+          path: zap-results.xml
 
  
         
