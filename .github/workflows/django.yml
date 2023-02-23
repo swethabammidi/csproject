@@ -219,24 +219,21 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         
-      - name: Install Node.js 10.x
+      - name: Install Node.js 18.x
         run: |
-         curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-         sudo apt-get install -y nodejs 
-      
+          sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz
+          sudo tar -xvf node-v18.0.0-linux-x64.tar.xz
+          sudo cp -r node-v18.0.0-linux-x64/{bin,include,lib,share} /usr/
+          node --version
+          
       - name: Install Yarn
         run: sudo npm install -g yarn
-        
-      - name: Run Yarn Audit Scan
-        run: |
-         yarn install
-         yarn audit --json > yarn-audit-report.json
-        
-      #- name: Upload report to artifacts
-      #  uses: actions/upload-artifact@v3.1.1
-      #  with:
-      #    name: yarn-audit-report
-      #    path: yarn-audit-report.json 
+      
+      - name: Install Dependencies
+        run: yarn install
+      
+      - name: Run Yarn Audit
+        run: yarn audit --json > report.json   
 
   #hydra_scan:
    # name: Hydra Scan and Artifact
