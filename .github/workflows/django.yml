@@ -219,18 +219,20 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         
-      - name: Use Node.js v7.0.0
+      - name: Install Node.js and npm
         uses: actions/setup-node@v2
         with:
-          node-version: '7.x.x'  
+         node-version: '14.x' 
       
-      - name: Install Dependencies
-        run: |
-         yarn install
+      - name: Install Yarn
+        run: sudo npm install -g yarn
+        
+      - name: Run yarn install
+        run: yarn install  
        
-      - name: Run Yarn Audit
+      - name: Run Yarn audit scan and save to JSON
         run: |
-          yarn audit --json > yarn-audit-report.json
+         yarn audit --json > yarn-audit-report.json
         
       - name: Upload report to artifacts
         uses: actions/upload-artifact@v3.1.1
