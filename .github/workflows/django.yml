@@ -210,7 +210,34 @@ jobs:
         with:
           name: nmap-results
           path: nmap-results.xml
-  
+          
+  Yarn-Audit-Scan:
+    name: Yarn Audit Scan
+    runs-on: ubuntu-latest
+    needs: functional-testing
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'  
+          
+      - name: Install Yarn
+        run: npm install -g yarn  
+      
+      - name: Install Dependencies
+        run: yarn install
+       
+      - name: Run Yarn Audit Scan
+        run: yarn audit --json > yarn_audit_report.json
+        
+      - name: Upload Yarn Audit Report
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: yarn-audit-report
+          path: yarn_audit_report.json 
 
   #hydra_scan:
    # name: Hydra Scan and Artifact
