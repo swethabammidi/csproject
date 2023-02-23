@@ -25,8 +25,8 @@
     "//": "a9 insecure components"
   },
   "engines": {
-    "node": "4.4.x",
-    "npm": "2.15.x"
+    "node": "14.x",
+    "npm": "6.x"
   },
   "scripts": {
     "start": "node server.js",
