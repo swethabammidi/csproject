@@ -221,13 +221,11 @@ jobs:
      - name: Install ZAP
        run: |
           sudo apt-get update
-          sudo apt-get install -y openjdk-8-jdk
-          wget -q -O - https://raw.githubusercontent.com/zaproxy/zaproxy/main/ZAP_2.10.0_Linux.tar.gz | tar -xzf -
-          cd ZAP_2.10.0
-          java -jar zap-2.10.0.jar -daemon
+          sudo apt-get install -y zaproxy
+          
      - name: Run ZAP scan    
        run: |
-        zap-cli --zap-path ZAP_2.10.0/zap.sh \
+        zap-cli --zap-path /usr/bin/zap-cli \
                 --output-format xml \
                 --output nmap-results.xml \
                 --spider \
