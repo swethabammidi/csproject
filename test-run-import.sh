@@ -48,7 +48,7 @@ curl -X 'POST' \
   -F 'close_old_findings=false' \
   -F 'close_old_findings_product_scope=false' \
   -F 'push_to_jira=true' \
-  -F 'create_finding_groups_for_all_findings=true'
+  -F 'create_finding_groups_for_all_findings=true' \
   -F 'jira_project_key=DD' \
   -F 'jira_issue_type=Epic' \
   -F 'jira_epic_name=Bandit' \
@@ -76,7 +76,7 @@ curl -X 'POST' \
   -F 'close_old_findings=false' \
   -F 'close_old_findings_product_scope=false' \
   -F 'push_to_jira=true' \
-  -F 'create_finding_groups_for_all_findings=true'
+  -F 'create_finding_groups_for_all_findings=true' \
   -F 'jira_project_key=DD' \
   -F 'jira_issue_type=Epic' \
   -F 'jira_epic_name=RetireJS' \
@@ -103,7 +103,7 @@ curl -X 'POST' \
   -F 'close_old_findings=false' \
   -F 'close_old_findings_product_scope=false' \
   -F 'push_to_jira=true' \
-  -F 'create_finding_groups_for_all_findings=true'
+  -F 'create_finding_groups_for_all_findings=true' \
   -F 'jira_project_key=DD' \
   -F 'jira_issue_type=Epic' \
   -F 'jira_epic_name=Nikto' \
@@ -129,7 +129,7 @@ curl -X 'POST' \
    -F 'close_old_findings=false' \
    -F 'close_old_findings_product_scope=false' \
    -F 'push_to_jira=true' \
-   -F 'create_finding_groups_for_all_findings=true'
+   -F 'create_finding_groups_for_all_findings=true' \
    -F 'jira_project_key=DD' \
    -F 'jira_issue_type=Epic' \
    -F 'jira_epic_name=Nmap' \
@@ -157,7 +157,7 @@ curl -X 'POST' \
    -F 'close_old_findings=false' \
    -F 'close_old_findings_product_scope=false' \
    -F 'push_to_jira=true' \
-   -F 'create_finding_groups_for_all_findings=true'
+   -F 'create_finding_groups_for_all_findings=true' \
    -F 'jira_project_key=DD' \
    -F 'jira_issue_type=Epic' \
    -F 'jira_epic_name=Trivy' \
