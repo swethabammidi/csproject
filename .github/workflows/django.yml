@@ -378,7 +378,15 @@ jobs:
           name: nmap-results
           # Destination path
           path: .
-    
+     
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.2
+        with:
+          # Artifact name
+          name: trivy-results
+          # Destination path
+          path: .
+          
       - name: Run Import 
         run: |
           chmod 755 test-run-import.sh
