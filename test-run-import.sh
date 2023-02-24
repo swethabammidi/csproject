@@ -125,8 +125,7 @@ curl -X 'POST' \
     -F 'close_old_findings_product_scope=false' \
     -F 'push_to_jira=true' \
     -F 'create_finding_groups_for_all_findings=true'
-    
-  curl -X PUT \
+    -X PUT \
     -H "Content-Type: application/json" \
     -H "Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61" \
     -d '{"jira_epic_name": "NMAP"}' \
