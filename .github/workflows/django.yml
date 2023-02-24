@@ -211,6 +211,28 @@ jobs:
           name: nmap-results
           path: nmap-results.xml
           
+  Trivy-scan:
+    name: Trivy Vulnerability Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install Trivy
+        run: |
+          sudo apt-get update && sudo apt-get install -y wget
+          wget https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.deb
+          sudo dpkg -i trivy_0.19.2_Linux-64bit.deb
+      - name: Run Trivy Scan
+        run: |
+          trivy --exit-code 1 --format json --output trivy-results.json .
+      
+      - name: Save Trivy results
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: trivy-results
+          path: trivy-results.json   
+          
   #Yarn-Audit-Scan:
    # name: Yarn Audit Scan
    # runs-on: ubuntu-latest
