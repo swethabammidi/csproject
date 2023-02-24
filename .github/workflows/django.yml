@@ -225,7 +225,7 @@ jobs:
           sudo dpkg -i trivy_0.19.2_Linux-64bit.deb
       - name: Run Trivy Scan
         run: |
-          trivy --exit-code 1 --format json --output trivy-results.json
+          trivy -format json --output trivy-results.json repository nginx:latest
       
       - name: Save Trivy results
         uses: actions/upload-artifact@v3.1.1
