@@ -49,15 +49,11 @@ curl -X 'POST' \
   -F 'close_old_findings_product_scope=false' \
   -F 'push_to_jira=true' \
   -F 'create_finding_groups_for_all_findings=true'
-  
-curl -X PUT \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61" \
-  -d '{"jira_epic_name": "bandit-scan"}' \
-  https://http://3.108.44.52:8080/api/v2/jira_finding_mappings/10011/ \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -H 'X-CSRFToken: CSRFToken'
+  -F 'jira_project_key=DD' \
+  -F 'jira_issue_type=Epic' \
+  -F 'jira_epic_name=Bandit' \
+  -F 'finding_text=bandit' \
+  -F 'finding_regex=true'
 
 
 echo '\n'
@@ -81,6 +77,11 @@ curl -X 'POST' \
   -F 'close_old_findings_product_scope=false' \
   -F 'push_to_jira=true' \
   -F 'create_finding_groups_for_all_findings=true'
+  -F 'jira_project_key=DD' \
+  -F 'jira_issue_type=Epic' \
+  -F 'jira_epic_name=RetireJS' \
+  -F 'finding_text=retire' \
+  -F 'finding_regex=true'
   
   echo '\n'
   echo 'Before Nikito Scan'
@@ -103,7 +104,11 @@ curl -X 'POST' \
     -F 'close_old_findings_product_scope=false' \
     -F 'push_to_jira=true' \
     -F 'create_finding_groups_for_all_findings=true'
-  
+    -F 'jira_project_key=DD' \
+    -F 'jira_issue_type=Epic' \
+    -F 'jira_epic_name=Nikto' \
+    -F 'finding_text=nikto' \
+    -F 'finding_regex=true'
   
   echo 'Before NMAP Scan'
     
@@ -125,18 +130,15 @@ curl -X 'POST' \
     -F 'close_old_findings_product_scope=false' \
     -F 'push_to_jira=true' \
     -F 'create_finding_groups_for_all_findings=true'
-    -X PUT \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61" \
-    -d '{"jira_epic_name": "NMAP"}' \
-    https://http://3.108.44.52:8080/api/v2/jira_finding_mappings/10011/ \
-    -H 'accept: application/json' \
-    -H 'Content-Type: application/json' \
-    -H 'X-CSRFToken: CSRFToken' 
+    -F 'jira_project_key=DD' \
+    -F 'jira_issue_type=Epic' \
+    -F 'jira_epic_name=Nmap' \
+    -F 'finding_text=nmap' \
+    -F 'finding_regex=true'
     
   echo '\n'
   
-  echo 'Before NMAP Scan'
+  echo 'Before Trivy Scan'
     
   curl -X 'POST' \
     'http://3.108.44.52:8080/api/v2/import-scan/' \
@@ -156,3 +158,8 @@ curl -X 'POST' \
     -F 'close_old_findings_product_scope=false' \
     -F 'push_to_jira=true' \
     -F 'create_finding_groups_for_all_findings=true'
+    -F 'jira_project_key=DD' \
+    -F 'jira_issue_type=Epic' \
+    -F 'jira_epic_name=Trivy' \
+    -F 'finding_text=trivy' \
+    -F 'finding_regex=true'
