@@ -220,14 +220,18 @@ jobs:
       
       - name: Install Trivy
         run: |
-          sudo apt-get update && sudo apt-get install -y wget
-          wget https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.deb
-          sudo dpkg -i trivy_0.19.2_Linux-64bit.deb
-      - name: Run Trivy Scan
-        run: |
-          trivy -format json --output trivy-results.json repository nginx:latest
+          sudo apt-get update
+          sudo apt-get install -y wget apt-transport-https gnupg lsb-release
+          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+          echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+          sudo apt-get update
+          sudo apt-get install trivy
       
-      - name: Save Trivy results
+      - name: Scan image with Trivy
+        run: |
+          trivy image alpine:latest --format json --output trivy-results.json
+      
+      - name: Upload results
         uses: actions/upload-artifact@v3.1.1
         with:
           name: trivy-results
