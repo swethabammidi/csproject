@@ -60,8 +60,7 @@ jobs:
           # npm audit fix
                       
     - name: Perform Node.js Audit and Output to Json file
-      run: npm install
-           npm audit --json > node-audit-results.json
+      run: npm audit --json > node-audit-results.json
       continue-on-error: true
       
     -  name: List the files available
