@@ -51,7 +51,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 10
-        run: npm install
       #run: nvm install 6
       #     npm install
       #run: npm i --package-lock-only
@@ -61,7 +60,8 @@ jobs:
           # npm audit fix
                       
     - name: Perform Node.js Audit and Output to Json file
-      run: npm@6 audit --json > node-audit-results.json
+      run: npm install
+           npm audit --json > node-audit-results.json
       continue-on-error: true
       
     -  name: List the files available
