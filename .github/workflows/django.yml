@@ -63,7 +63,7 @@ jobs:
     - name: Perform Node.js Audit and Output to Json file
       run: npm install
            npm install -g audit-ci
-           audit-ci --json -f ./audit-ci-report.json -p ./package.json
+           audit-ci --json -f ./package.json
       continue-on-error: true
       
     -  name: List the files available
