@@ -58,12 +58,12 @@ jobs:
           # npm config get shrinkwrap
           # npm i --package-lock-only
           # npm audit fix
-    - name: Install npm dependencies
-      run: npm install
-           npm install -g audit-ci
+
                       
     - name: Perform Node.js Audit and Output to Json file
-      run: audit-ci --json -f ./node-audit-results.json
+      run: npm install
+           npm install -g audit-ci
+           audit-ci --json -f ./node-audit-results.json
       continue-on-error: true
       
     -  name: List the files available
