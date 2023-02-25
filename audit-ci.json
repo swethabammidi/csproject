@@ -1,0 +1,6 @@
+{
+    "moderate": true,
+    "package-manager": "node",
+    "report-type": "summary",
+    "allowlist": []
+  }
