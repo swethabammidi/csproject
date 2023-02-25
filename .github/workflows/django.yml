@@ -63,7 +63,7 @@ jobs:
     - name: Perform Node.js Audit and Output to Json file
       run: npm install
            npm install -g audit-ci
-           audit-ci --json -f ./node-audit-results.json -p ./package.json
+           audit-ci --json -f ./audit-ci-report.json -p ./package.json
       continue-on-error: true
       
     -  name: List the files available
@@ -73,7 +73,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.1
       with:
         name: Node-Audit-Output
-        path: node-audit-results.json
+        path: audit-ci-report.json
       if: always() 
 
 # Build with Sleep Statement
