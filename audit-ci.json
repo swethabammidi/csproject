@@ -1,5 +1,4 @@
 {
-    "low": true,
     "package-manager": "npm",
     "report-type": "summary",
     "allowlist": []
