@@ -51,30 +51,28 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 12
-      #run: nvm install 6
-      #     npm install
-      #run: npm i --package-lock-only
-          # npm config get package-lock
-          # npm config get shrinkwrap
-          # npm i --package-lock-only
-          # npm audit fix
-
-                      
+        
     - name: Perform Node.js Audit and Output to Json file
       run: npm install &&
            npm install -g audit-ci &&
            audit-ci --report true --json ./audit-ci-report.json --config ./audit-ci.json >> reports.json
-           #tail -n +3 reports.json | head -n -1 > NPMAuditReport.json 
       continue-on-error: true
-       
-    -  name: List the files available
-       run: ls
-       
+      
+    - name: Perform Node.js Audit and Output to Json file
+      run: |
+       #!/bin/bash
+       # Remove the first two lines of the file
+       tail -n +3 reports.json > temp.json
+       # Remove the last line of the file
+       head -n -1 temp.json > NPMAuditReport.json
+       # Clean up temporary file
+       rm temp.json
+          
     - name: Upload the Output as an artifact
       uses: actions/upload-artifact@v3.1.1
       with:
         name: Node-Audit-Output
-        path: reports.json
+        path: NPMAuditReport.json
       if: always() 
 
 # Build with Sleep Statement
