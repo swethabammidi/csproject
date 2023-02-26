@@ -74,7 +74,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.1
       with:
         name: Node-Audit-Output
-        path: NPMAuditReport.json
+        path: reports.json
       if: always() 
 
 # Build with Sleep Statement
