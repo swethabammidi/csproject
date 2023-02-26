@@ -64,6 +64,7 @@ jobs:
       run: npm install &&
            npm install -g audit-ci &&
            audit-ci --report true --json ./audit-ci-report.json --config ./audit-ci.json >> reports.json
+           tail -n +3 reports.json | head -n -1 > NPMAuditReport.json 
       continue-on-error: true
       
     -  name: List the files available
@@ -73,7 +74,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.1
       with:
         name: Node-Audit-Output
-        path: reports.json
+        path: NPMAuditReport.json
       if: always() 
 
 # Build with Sleep Statement
