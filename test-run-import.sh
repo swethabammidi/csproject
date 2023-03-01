@@ -15,45 +15,45 @@ export file="scan name.xml"
 echo '\nprinting path'
 echo $PATH
 
-pip install bandit-sarif-formatter
+#pip install bandit-sarif-formatter
 
-echo 'printing bandit version from relative path'
-bandit-sarif-formatter --version
+#echo 'printing bandit version from relative path'
+#bandit-sarif-formatter --version
 
-echo 'printing bandit version from absolute path'
-/usr/local/bin/bandit-sarif-formatter --version
+#echo 'printing bandit version from absolute path'
+#/usr/local/bin/bandit-sarif-formatter --version
 
 
-bandit-sarif-formatter -o bandit-results.sarif bandit-results.json
-ls -l bandit-results.sarif bandit-results.json
+#bandit-sarif-formatter -o bandit-results.sarif bandit-results.json
+#ls -l bandit-results.sarif bandit-results.json
 
-echo $file
-echo 'Before Bandit Scan'
+#echo $file
+#echo 'Before Bandit Scan'
 
-curl -X 'POST' \
-  'http://3.108.44.52:8080/api/v2/import-scan/' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: multipart/form-data' \
-  -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
-  -H 'X-CSRFToken: CSRFToken' \
-  -F 'minimum_severity=Info' \
-  -F 'active=true' \
-  -F 'verified=true' \
-  -F 'scan_type=Bandit Scan' \
-  -F 'file=@bandit-results.sarif;type=application/sarif' \
-  -F 'product_name=Test product' \
-  -F 'engagement_name=test_bandit-scan' \
-  -F 'engagement=3' \
-  -F 'auto_create_context=true' \
-  -F 'close_old_findings=false' \
-  -F 'close_old_findings_product_scope=false' \
-  -F 'push_to_jira=true' \
-  -F 'create_finding_groups_for_all_findings=true' \
-  -F 'jira_project_key=DD' \
-  -F 'jira_issue_type=Epic' \
-  -F 'jira_epic_name=Bandit' \
-  -F 'finding_text=bandit' \
-  -F 'finding_regex=true'
+#curl -X 'POST' \
+ # 'http://3.108.44.52:8080/api/v2/import-scan/' \
+ # -H 'accept: application/json' \
+ # -H 'Content-Type: multipart/form-data' \
+ # -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+ # -H 'X-CSRFToken: CSRFToken' \
+ # -F 'minimum_severity=Info' \
+ # -F 'active=true' \
+ # -F 'verified=true' \
+ # -F 'scan_type=Bandit Scan' \
+ # -F 'file=@bandit-results.sarif;type=application/sarif' \
+ # -F 'product_name=Test product' \
+ # -F 'engagement_name=test_bandit-scan' \
+  #-F 'engagement=3' \
+  #-F 'auto_create_context=true' \
+  #-F 'close_old_findings=false' \
+ # -F 'close_old_findings_product_scope=false' \
+ # -F 'push_to_jira=true' \
+ # -F 'create_finding_groups_for_all_findings=true' \
+ # -F 'jira_project_key=DD' \
+ # -F 'jira_issue_type=Epic' \
+ # -F 'jira_epic_name=Bandit' \
+ # -F 'finding_text=bandit' \
+ # -F 'finding_regex=true'
 
 
 echo '\n'
