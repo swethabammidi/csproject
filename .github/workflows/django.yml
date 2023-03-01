@@ -197,13 +197,13 @@ jobs:
     steps:
       - uses: actions/checkout@master
       
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v3.0.2
-        with:
-          # Artifact name
-          name: Bandit Output
-          # Destination path
-          path: .
+      #- name: Download a Build Artifact
+       # uses: actions/download-artifact@v3.0.2
+       # with:
+       #   # Artifact name
+        #  name: Bandit Output
+        #  # Destination path
+        #  path: .
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.2
