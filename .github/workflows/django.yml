@@ -72,7 +72,7 @@ jobs:
   build:
     name: Build Stage
     runs-on: ubuntu-latest
-    needs: component-analysis
+    needs: Trivy-scan
     steps:
       - name: Sleep for 10 seconds
         run: sleep 10
@@ -112,7 +112,7 @@ jobs:
   nikto-scan:
     name: Nikto Scan
     runs-on: ubuntu-latest
-    needs: functional-testing      
+    needs: oast-frontend-retirejs    
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -142,7 +142,7 @@ jobs:
   nmap-scan:
     name: NMAP Scan
     runs-on: ubuntu-latest
-    needs: functional-testing
+    needs: oast-frontend-retirejs
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
