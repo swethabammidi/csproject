@@ -110,7 +110,7 @@ jobs:
 
 
   nikto-scan:
-    name: Nikto Scan
+    name: DAST-Nikto Scan
     runs-on: ubuntu-latest
     needs: oast-frontend-retirejs    
     steps:
@@ -140,7 +140,7 @@ jobs:
        path: scan.xml
    
   nmap-scan:
-    name: NMAP Scan
+    name: DAST-NMAP Scan
     runs-on: ubuntu-latest
     needs: oast-frontend-retirejs
     steps:
