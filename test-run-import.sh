@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define variables
-export URL="http://54.90.101.124:8080/api/v2/import-scan/"
+export URL="http://50.17.61.172:8080/api/v2/import-scan/"
 export TOKEN="e596a9d6f75615c59f0a80b4afa7acf695e8df61"
 export X-CSRFTOKEN="xjzuPkDwJQJ2MYCypdA9LTVWD26zBxkAjMoiZeUWNucFpk9mtm7cWhGPJI4HjaCT"
 export SEVERITY="Info"
@@ -31,7 +31,7 @@ echo $PATH
 #echo 'Before Bandit Scan'
 
 #curl -X 'POST' \
- # 'http://54.90.101.124:8080/api/v2/import-scan/' \
+ # 'http://50.17.61.172:8080/api/v2/import-scan/' \
  # -H 'accept: application/json' \
  # -H 'Content-Type: multipart/form-data' \
  # -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
@@ -60,7 +60,7 @@ echo '\n'
 echo 'Before Retire JS Scan'
 
 curl -X 'POST' \
-  'http://54.90.101.124:8080/api/v2/import-scan/' \
+  'http://50.17.61.172:8080/api/v2/import-scan/' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
@@ -87,7 +87,7 @@ echo '\n'
 echo 'Before Nikito Scan'
   
 curl -X 'POST' \
-  'http://54.90.101.124:8080/api/v2/import-scan/' \
+  'http://50.17.61.172:8080/api/v2/import-scan/' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
@@ -113,7 +113,7 @@ curl -X 'POST' \
  echo 'Before NMAP Scan'
     
  curl -X 'POST' \
-   'http://54.90.101.124:8080/api/v2/import-scan/' \
+   'http://50.17.61.172:8080/api/v2/import-scan/' \
    -H 'accept: application/json' \
    -H 'Content-Type: multipart/form-data' \
    -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
@@ -141,7 +141,7 @@ curl -X 'POST' \
  echo 'Before Trivy Scan'
     
  curl -X 'POST' \
-   'http://54.90.101.124:8080/api/v2/import-scan/' \
+   'http://50.17.61.172:8080/api/v2/import-scan/' \
    -H 'accept: application/json' \
    -H 'Content-Type: multipart/form-data' \
    -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
@@ -169,7 +169,7 @@ curl -X 'POST' \
  echo 'Before NMAP Audit Scan'
     
  curl -X 'POST' \
-   'http://54.90.101.124:8080/api/v2/import-scan/' \
+   'http://50.17.61.172:8080/api/v2/import-scan/' \
    -H 'accept: application/json' \
    -H 'Content-Type: multipart/form-data' \
    -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
