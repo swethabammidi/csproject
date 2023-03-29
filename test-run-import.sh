@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define variables
-export URL="http://3.108.44.52:8080/api/v2/import-scan/"
+export URL="http://54.90.101.124:8080/api/v2/import-scan/"
 export TOKEN="e596a9d6f75615c59f0a80b4afa7acf695e8df61"
 export X-CSRFTOKEN="xjzuPkDwJQJ2MYCypdA9LTVWD26zBxkAjMoiZeUWNucFpk9mtm7cWhGPJI4HjaCT"
 export SEVERITY="Info"
@@ -31,7 +31,7 @@ echo $PATH
 #echo 'Before Bandit Scan'
 
 #curl -X 'POST' \
- # 'http://3.108.44.52:8080/api/v2/import-scan/' \
+ # 'http://54.90.101.124:8080/api/v2/import-scan/' \
  # -H 'accept: application/json' \
  # -H 'Content-Type: multipart/form-data' \
  # -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
@@ -60,10 +60,10 @@ echo '\n'
 echo 'Before Retire JS Scan'
 
 curl -X 'POST' \
-  'http://3.108.44.52:8080/api/v2/import-scan/' \
+  'http://54.90.101.124:8080/api/v2/import-scan/' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
-  -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+  -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
   -H 'X-CSRFToken: CSRFToken' \
   -F 'minimum_severity=Info' \
   -F 'active=true' \
@@ -72,7 +72,7 @@ curl -X 'POST' \
   -F 'file=@retirejs-report.json;type=application/json' \
   -F 'product_name=Test product' \
   -F 'engagement_name=test-retire.js-scan' \
-  -F 'engagement=4' \
+  -F 'engagement=5' \
   -F 'close_old_findings=false' \
   -F 'close_old_findings_product_scope=false' \
   -F 'push_to_jira=true' \
@@ -87,10 +87,10 @@ echo '\n'
 echo 'Before Nikito Scan'
   
 curl -X 'POST' \
-  'http://3.108.44.52:8080/api/v2/import-scan/' \
+  'http://54.90.101.124:8080/api/v2/import-scan/' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
-  -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+  -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
   -H 'X-CSRFToken: CSRFToken' \
   -F 'minimum_severity=Info' \
   -F 'active=true' \
@@ -99,7 +99,7 @@ curl -X 'POST' \
   -F 'file=@scan.xml;type=text/xml' \
   -F 'product_name=Test product' \
   -F 'engagement_name=Nikto Scan' \
-  -F 'engagement=8' \
+  -F 'engagement=4' \
   -F 'close_old_findings=false' \
   -F 'close_old_findings_product_scope=false' \
   -F 'push_to_jira=true' \
@@ -113,10 +113,10 @@ curl -X 'POST' \
  echo 'Before NMAP Scan'
     
  curl -X 'POST' \
-   'http://3.108.44.52:8080/api/v2/import-scan/' \
+   'http://54.90.101.124:8080/api/v2/import-scan/' \
    -H 'accept: application/json' \
    -H 'Content-Type: multipart/form-data' \
-   -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+   -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
    -H 'X-CSRFToken: CSRFToken' \
    -F 'minimum_severity=Info' \
    -F 'active=true' \
@@ -125,7 +125,7 @@ curl -X 'POST' \
    -F 'file=@nmap-results.xml;type=text/xml' \
    -F 'product_name=Test product' \
    -F 'engagement_name=NMAP Scan19' \
-   -F 'engagement=19' \
+   -F 'engagement=3' \
    -F 'close_old_findings=false' \
    -F 'close_old_findings_product_scope=false' \
    -F 'push_to_jira=true' \
@@ -141,10 +141,10 @@ curl -X 'POST' \
  echo 'Before Trivy Scan'
     
  curl -X 'POST' \
-   'http://3.108.44.52:8080/api/v2/import-scan/' \
+   'http://54.90.101.124:8080/api/v2/import-scan/' \
    -H 'accept: application/json' \
    -H 'Content-Type: multipart/form-data' \
-   -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+   -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
    -H 'X-CSRFToken: CSRFToken' \
    -F 'minimum_severity=Info' \
    -F 'active=true' \
@@ -153,7 +153,7 @@ curl -X 'POST' \
    -F 'file=@trivy-results.json;type=application/json' \
    -F 'product_name=Test product' \
    -F 'engagement_name=Trivy Scan' \
-   -F 'engagement=21' \
+   -F 'engagement=2' \
    -F 'close_old_findings=false' \
    -F 'close_old_findings_product_scope=false' \
    -F 'push_to_jira=true' \
@@ -169,10 +169,10 @@ curl -X 'POST' \
  echo 'Before NMAP Audit Scan'
     
  curl -X 'POST' \
-   'http://3.108.44.52:8080/api/v2/import-scan/' \
+   'http://54.90.101.124:8080/api/v2/import-scan/' \
    -H 'accept: application/json' \
    -H 'Content-Type: multipart/form-data' \
-   -H 'Authorization: Token e596a9d6f75615c59f0a80b4afa7acf695e8df61' \
+   -H 'Authorization: Token 99450c3433913c9afafc007c18e64ed68d236978' \
    -H 'X-CSRFToken: CSRFToken' \
    -F 'minimum_severity=Info' \
    -F 'active=true' \
@@ -181,7 +181,7 @@ curl -X 'POST' \
    -F 'file=@NPMAuditReport.json;type=application/json' \
    -F 'product_name=Test product' \
    -F 'engagement_name=NPM Audit Scan' \
-   -F 'engagement=22' \
+   -F 'engagement=1' \
    -F 'close_old_findings=false' \
    -F 'close_old_findings_product_scope=false' \
    -F 'push_to_jira=true' \
